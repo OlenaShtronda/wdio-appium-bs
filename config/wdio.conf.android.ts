@@ -1,5 +1,5 @@
 import { config as sharedConfig } from "./wdio.conf.js";
-import { join } from "path"
+import { join } from "path";
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 
@@ -16,8 +16,8 @@ export const config = {
         "--session-override", // Allow session override for better connection stability
         "--log-level", "error:info" // Reduce log noise but keep important info
       ],
-      command: 'appium',
-      logPath: './appium.log', // Log to file for debugging
+      command: "appium",
+      logPath: "./appium.log", // Log to file for debugging
       // Connection stability settings
       timeout: 300000, // 5 minutes timeout for server startup
       killTimeout: 30000, // 30 seconds to kill existing server process
@@ -26,21 +26,20 @@ export const config = {
     },
     capabilities: [{
       // capabilities for local Appium web tests on an Android Emulator or Real device
-      "appium:platformName": 'Android',
-      'appium:deviceName': 'ZE2232TTQ8',
-      "appium:app": join(process.cwd(), "./apps/android/app-staging-debug.apk"),
-      'appium:platformVersion': '10.0',
-      'appium:automationName': 'UiAutomator2',
+      "appium:platformName": "Android",
+      "appium:deviceName": "RFCX90X7H2N",
+      "appium:app": join(process.cwd(), "./apps/voice-recorder.apk"),
+      "appium:platformVersion": "16.0",
+      "appium:automationName": "UiAutomator2",
       // Connection stability improvements
-      'appium:newCommandTimeout': 300, // 5 minutes timeout for commands
-      'appium:noReset': false, // Always reset app state for clean runs
-      'appium:fullReset': false, // But don't uninstall/reinstall unless needed
-      'appium:clearSystemFiles': true, // Clear Appium system files between sessions
-      'appium:enforceXPath1': true, // Use consistent XPath version
+      "appium:newCommandTimeout": 300, // 5 minutes timeout for commands
+      "appium:noReset": true, // Do not reset app between sessions to speed up tests
+      "appium:fullReset": false, // But don't uninstall/reinstall unless needed
+      "appium:clearSystemFiles": true, // Clear Appium system files between sessions
+      "appium:enforceXPath1": true, // Use consistent XPath version
       // Session management
-      'appium:sessionTimeout': 600000, // 10 minutes session timeout
-      'appium:eventTimings': true, // Enable event timing for debugging
-      'appium:printPageSourceOnFindFailure': false // Reduce log noise
+      "appium:sessionTimeout": 600000, // 10 minutes session timeout
+      "appium:eventTimings": true, // Enable event timing for debugging
+      "appium:printPageSourceOnFindFailure": false // Reduce log noise
   }],
-
 }

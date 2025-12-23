@@ -1,5 +1,5 @@
 import { browser } from '@wdio/globals'
-import Page from './page.js';
+import Page from './BasePage.js';
 
 // const logo = "//*[contains(@resource-id, 'logo')]";
 // const countryOfResidenceInputPicker = "//android.widget.EditText[@text='Enter country name']"

@@ -149,19 +149,6 @@ export default class Page {
           await this.waitUntilElementDisplayed(element);
           const elem = await this.getElement(element);
           
-          // Wait for element to be clickable
-          await browser.waitUntil(async () => {
-            try {
-              return await elem.isClickable();
-            } catch (error) {
-              return false;
-            }
-          }, {
-            timeout: 10000,
-            timeoutMsg: `Element ${element} not clickable within 10s`,
-            interval: 500
-          });
-          
           await elem.click();
           console.log(`Successfully clicked element ${element} on attempt ${attempt}`);
           return; // Success

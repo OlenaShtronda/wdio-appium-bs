@@ -67,3 +67,8 @@ apps
 ChromeDriver.txt
 
 out
+
+allure-report/
+allure-results/
+
+q.sh
