@@ -1,6 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","120820","Verify user can discard new recording","Easy Voice Recorder Tests","Wed Dec 24 20:53:15 UTC 2025","broken","Wed Dec 24 20:55:15 UTC 2025","","","",""
-"","2920","Verify default state on launch","Easy Voice Recorder Tests","Wed Dec 24 20:47:59 UTC 2025","passed","Wed Dec 24 20:48:02 UTC 2025","","","",""
-"","104143","Verify user can start recording","Easy Voice Recorder Tests","Wed Dec 24 20:48:02 UTC 2025","passed","Wed Dec 24 20:49:46 UTC 2025","","","",""
-"","104768","Verify user can save new recording","Easy Voice Recorder Tests","Wed Dec 24 20:55:47 UTC 2025","broken","Wed Dec 24 20:57:32 UTC 2025","","","",""
-"","120835","Verify user can pause recording","Easy Voice Recorder Tests","Wed Dec 24 20:50:20 UTC 2025","broken","Wed Dec 24 20:52:21 UTC 2025","","","",""
+"","76328","Verify user can pause recording","Easy Voice Recorder Tests","Wed Dec 24 21:15:08 UTC 2025","passed","Wed Dec 24 21:16:24 UTC 2025","","","",""

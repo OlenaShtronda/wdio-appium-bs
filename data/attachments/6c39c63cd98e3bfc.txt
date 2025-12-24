@@ -1,1 +1,0 @@
-stale element reference: WebDriverError: The element 'By.id: com.coffeebeanventures.easyvoicerecorder:id/record_pause_button' does not exist in DOM anymore when running "element/00000000-0000-b0ea-ffff-ffff00000040/displayed" with method "GET"
