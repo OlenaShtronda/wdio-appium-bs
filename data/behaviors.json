@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"Verify user can pause recording","uid":"4b63f4a35fcdddf5","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"passed","time":{"start":1766610908649,"stop":1766610984977,"duration":76328},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":0,"retriesStatusChange":false,"parameters":["Android"],"tags":[]}]}
+{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[]}
