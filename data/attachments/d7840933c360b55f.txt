@@ -1,0 +1,1 @@
+stale element reference: WebDriverError: androidx.test.uiautomator.StaleObjectException when running "element/00000000-0000-2729-ffff-ffff00000025/text" with method "GET"

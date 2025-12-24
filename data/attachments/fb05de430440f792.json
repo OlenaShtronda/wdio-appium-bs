@@ -1,0 +1,4 @@
+{
+  "appPackage": "com.coffeebeanventures.easyvoicerecorder",
+  "appActivity": "com.digipom.easyvoicerecorder.ui.activity.EasyVoiceRecorderActivity"
+}
