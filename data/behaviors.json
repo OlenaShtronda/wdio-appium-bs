@@ -1,1 +1,1 @@
-{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[]}
+{"uid":"b1a8273437954620fa374b796ffaacdd","name":"behaviors","children":[{"name":"Verify default state on launch","uid":"a182be1fe59e88b6","parentUid":"b1a8273437954620fa374b796ffaacdd","status":"unknown","time":{"start":1766605346063},"flaky":false,"newFailed":false,"newPassed":false,"newBroken":false,"retriesCount":1,"retriesStatusChange":false,"parameters":["safari"],"tags":[]}]}
