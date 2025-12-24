@@ -1,6 +1,6 @@
 import { config as sharedConfig } from "./wdio.conf.js";
 import dotenv from "dotenv";
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 export const config = {
     ...sharedConfig,
     user: process.env.BROWSERSTACK_USERNAME,
@@ -43,3 +43,60 @@ export const config = {
         ]
       ],
 }
+
+// import { config as sharedConfig } from "./wdio.conf.js";
+// import dotenv from "dotenv";
+// dotenv.config();
+
+// export const config = {
+//   ...sharedConfig,
+
+//   user: process.env.BROWSERSTACK_USERNAME,
+//   key: process.env.BROWSERSTACK_ACCESS_KEY,
+
+//   protocol: "https",
+//   hostname: "hub.browserstack.com",
+//   port: 443,
+//   path: "/wd/hub",
+
+//   maxInstances: 1,
+
+//   capabilities: [
+//     {
+//       platformName: "Android",
+
+//       "appium:automationName": "UiAutomator2",
+
+//       "appium:app": process.env.BROWSERSTACK_ANDROID_APP_ID,
+
+//       "bstack:options": {
+//         deviceName: "Samsung Galaxy S22 Ultra",
+//         osVersion: "12.0",
+//         deviceOrientation: "portrait",
+//         local: true,
+//         projectName: "BrowserStack Android app testing",
+//         buildName: "browserstack Android build",
+//         sessionName: "Voice Recorder tests",
+//       },
+
+//       "appium:autoAcceptAlerts": true,
+//       "appium:autoGrantPermissions": true,
+//       "appium:newCommandTimeout": 300,
+//     },
+//   ],
+
+//   services: [
+//     [
+//       "browserstack",
+//       {
+//         browserstackLocal: true,
+//         debug: true,
+//         networkLogs: true,
+//         consoleLogs: "warn",
+//         maxSessions: 1,
+//         connectionRetryTimeout: 300000,
+//         connectionRetryCount: 5,
+//       },
+//     ],
+//   ],
+// };

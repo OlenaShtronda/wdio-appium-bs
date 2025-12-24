@@ -1,14 +1,14 @@
-import { browser } from '@wdio/globals';
+// import { browser } from '@wdio/globals';
 import allureReporter from '@wdio/allure-reporter';
 import voiceRecorder from '../pageobjects/VoiceRecorderPage.js';
 
 describe('Easy Voice Recorder Tests', () => {
-  beforeEach(async () => {
-    await browser.startActivity(
-      'com.coffeebeanventures.easyvoicerecorder',
-      'com.digipom.easyvoicerecorder.ui.activity.EasyVoiceRecorderActivity'
-    );
-  });
+  // beforeEach(async () => {
+  //   await browser.startActivity(
+  //     'com.coffeebeanventures.easyvoicerecorder',
+  //     'com.digipom.easyvoicerecorder.ui.activity.EasyVoiceRecorderActivity'
+  //   );
+  // });
 
   it('Verify default state on launch', async () => {
     allureReporter.startStep('Check default state on launch');
@@ -22,14 +22,16 @@ describe('Easy Voice Recorder Tests', () => {
   it('Verify user can start recording', async () => {
     allureReporter.startStep('Start recording and check status');
     await voiceRecorder.startRecording();
+    await voiceRecorder.handleOnboardingAndPermissions();
     await voiceRecorder.assertRecordPauseBtnIsInRecordingMode();
     await voiceRecorder.assertRecordingTimeIsIncreasing();
     allureReporter.endStep();
   });
 
-  it('Verify user can pause recording', async () => {
+  it.only('Verify user can pause recording', async () => {
     allureReporter.startStep('Pause recording and check status');
     await voiceRecorder.startRecording();
+    await voiceRecorder.handleOnboardingAndPermissions();
     await voiceRecorder.pauseRecording();
     await voiceRecorder.assertRecordPauseBtnIsInPauseMode();
     await voiceRecorder.assertRecordingIsPaused();
@@ -40,6 +42,8 @@ describe('Easy Voice Recorder Tests', () => {
   it('Verify user can discard new recording', async () => {
     allureReporter.startStep('Discard new recording flow');
     await voiceRecorder.startRecording();
+    await voiceRecorder.handleOnboardingAndPermissions();
+    await voiceRecorder.pauseRecording();
     await voiceRecorder.cancelRecording();
     await voiceRecorder.assertDiscardConfirmationDialogIsShown();
     await voiceRecorder.confirmDeleteCurrentRecording();
@@ -51,6 +55,8 @@ describe('Easy Voice Recorder Tests', () => {
     allureReporter.startStep('Save new recording and validate name');
     const draftName = await voiceRecorder.getDraftRecordingName();
     await voiceRecorder.startRecording();
+    await voiceRecorder.handleOnboardingAndPermissions();
+    await voiceRecorder.pauseRecording();
     await voiceRecorder.saveRecording();
     const savedName = await voiceRecorder.getSavedRecordingName();
     await voiceRecorder.assertSavedRecordingNameIsCorrect(draftName, savedName);

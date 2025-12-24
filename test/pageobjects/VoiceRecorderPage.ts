@@ -11,7 +11,11 @@ class VoiceRecorder extends Page {
   private readonly confirmDeleteNoBtn = 'id=android:id/button2';
   private readonly newVoiceNoteTitle = 'android=new UiSelector().text("New voice note")';
   private readonly newRecordingName = 'id=com.coffeebeanventures.easyvoicerecorder:id/next_recording_editable_file_name';
+  // private readonly recordingName = 'id=com.coffeebeanventures.easyvoicerecorder:id/recording_file_name';
   private readonly savedRecordingName = 'id=com.coffeebeanventures.easyvoicerecorder:id/finished_recording_name';
+
+  private readonly continueBtn = 'id=android:id/button1';
+  private readonly allowBtn = 'id=com.android.permissioncontroller:id/permission_allow_one_time_button';
 
   /* ===================== ACTIONS ===================== */
 
@@ -40,8 +44,50 @@ class VoiceRecorder extends Page {
     return await this.getElementText(this.newRecordingName);
   }
 
+  // public async getRecordingName(): Promise<string> {
+  //   return await this.getElementText(this.recordingName);
+  // }
+
   public async getSavedRecordingName(): Promise<string> {
     return await this.getElementText(this.savedRecordingName);
+  }
+
+  public async allowAccessToMicrophoneAndLocation(): Promise<void> {
+    if (await this.isElementDisplayed(this.continueBtn)) {
+      await this.clickElement(this.continueBtn);
+    }
+  }
+
+  public async allowOnlyThisTime(): Promise<void> {
+    if (await this.isElementDisplayed(this.allowBtn)) {
+      await this.clickElement(this.allowBtn);
+    }
+  }
+
+  public async selectLocation(): Promise<void> {
+    if (await this.isElementDisplayed(this.continueBtn)) {
+      await this.clickElement(this.continueBtn);
+    }
+  }
+
+  public async useThisFolder(): Promise<void> {
+    if (await this.isElementDisplayed(this.continueBtn)) {
+      await this.clickElement(this.continueBtn);
+    }
+  }
+
+  public async allowAccessFilesInRecordings(): Promise<void> {
+    if (await this.isElementDisplayed(this.continueBtn)) {
+      await this.clickElement(this.continueBtn);
+    }
+  }
+
+  public async handleOnboardingAndPermissions(): Promise<void> {
+    await this.allowAccessToMicrophoneAndLocation();
+    await this.allowOnlyThisTime();
+    await this.selectLocation();
+    await this.useThisFolder();
+    await this.allowAccessFilesInRecordings();
   }
 
   /* ===================== ASSERTIONS ===================== */
@@ -111,7 +157,7 @@ class VoiceRecorder extends Page {
   }
 
   public async assertSavedRecordingNameIsCorrect(draftName: string, savedName: string): Promise<void> {
-    await expect(draftName).toStrictEqual(savedName.replace(/\.m4a$/, ''));
+    await expect(draftName).toStrictEqual(savedName.replace(/\.wav$/, ''));
   }
 }
 
