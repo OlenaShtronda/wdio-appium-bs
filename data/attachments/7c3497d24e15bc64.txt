@@ -1,1 +1,0 @@
-unknown method: WebDriverError: Method has not yet been implemented when running "appium/device/start_activity" with method "POST" and args "{"appPackage":"com.coffeebeanventures.easyvoicerecorder","appActivity":"com.digipom.easyvoicerecorder.ui.activity.EasyVoiceRecorderActivity"}"
