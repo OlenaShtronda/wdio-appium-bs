@@ -81,26 +81,9 @@ jobs:
               --alluredir allure-results
           done
 
-      - name: Download previous Allure history
-        if: always()
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages
-          fetch-depth: 1
-        continue-on-error: true
-
-      - name: Copy history to Allure results
-        if: always()
-        run: |
-          if [ -d "gh-pages/history" ]; then
-            mkdir -p allure-results/history
-            cp -R gh-pages/history/* allure-results/history/
-          fi
-
       - name: Generate Allure Report
         if: always()
-        run: npx allure generate allure-results -o allure-report
+        run: npm run allure:generate
         continue-on-error: true
 
       - name: Upload Allure Report
