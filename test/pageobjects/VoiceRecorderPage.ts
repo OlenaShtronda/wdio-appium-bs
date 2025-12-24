@@ -11,7 +11,6 @@ class VoiceRecorder extends Page {
   private readonly confirmDeleteNoBtn = 'id=android:id/button2';
   private readonly newVoiceNoteTitle = 'android=new UiSelector().text("New voice note")';
   private readonly newRecordingName = 'id=com.coffeebeanventures.easyvoicerecorder:id/next_recording_editable_file_name';
-  // private readonly recordingName = 'id=com.coffeebeanventures.easyvoicerecorder:id/recording_file_name';
   private readonly savedRecordingName = 'id=com.coffeebeanventures.easyvoicerecorder:id/finished_recording_name';
 
   private readonly continueBtn = 'id=android:id/button1';
@@ -43,10 +42,6 @@ class VoiceRecorder extends Page {
   public async getDraftRecordingName(): Promise<string> {
     return await this.getElementText(this.newRecordingName);
   }
-
-  // public async getRecordingName(): Promise<string> {
-  //   return await this.getElementText(this.recordingName);
-  // }
 
   public async getSavedRecordingName(): Promise<string> {
     return await this.getElementText(this.savedRecordingName);

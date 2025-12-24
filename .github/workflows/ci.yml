@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -62,13 +64,43 @@ jobs:
           echo "BROWSERSTACK_ACCESS_KEY=${{ secrets.BROWSERSTACK_ACCESS_KEY }}" >> .env
           echo "BROWSERSTACK_ANDROID_APP_ID=${{ secrets.BROWSERSTACK_ANDROID_APP_ID }}" >> .env
 
-      - name: Run Android tests on BrowserStack
-        run: npm run test:android:bs
-        # continue-on-error: true
+      - name: Prepare Allure results folder
+        run: mkdir -p allure-results
+
+      - name: Run Android tests by spec
+        run: |
+          for spec in \
+            ./test/specs/verifyDefaultStateOnLaunch.e2e.ts \
+            ./test/specs/verifyUserCanStartRecording.e2e.ts \
+            ./test/specs/verifyUserCanPauseRecording.e2e.ts \
+            ./test/specs/verifyUserCanDiscardNewRecording.e2e.ts \
+            ./test/specs/verifyUserCanSaveNewRecording.e2e.ts
+          do
+            echo "Running $spec"
+            npx wdio run ./config/wdio.conf.android.bs.ts --spec $spec --cucumberOpts.requireModule ts-node/register \
+              --alluredir allure-results
+          done
+
+      - name: Download previous Allure history
+        if: always()
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+        continue-on-error: true
+
+      - name: Copy history to Allure results
+        if: always()
+        run: |
+          if [ -d "gh-pages/history" ]; then
+            mkdir -p allure-results/history
+            cp -R gh-pages/history/* allure-results/history/
+          fi
 
       - name: Generate Allure Report
         if: always()
-        run: npm run allure:generate
+        run: npx allure generate allure-results -o allure-report
         continue-on-error: true
 
       - name: Upload Allure Report
